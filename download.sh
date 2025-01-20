@@ -19,13 +19,3 @@ fi
 
 echo "Cleaning out workspace..."
 rm -rf "$dir"
-echo "Extracting ${filename} to ${dir}"
-
-files_to_extract=("bzimage" "bzroot" "bzroot-gui" "bzfirmware" "bzmodules")
-unzip "$filename" "${files_to_extract[@]}" -d "$dir"
-
-cd ./"$dir" || exit
-mkdir root
-mkdir firmware
-root=$(realpath ./root)
-firmware=$(realpath ./firmware)
