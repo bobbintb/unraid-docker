@@ -1,2 +1,2 @@
-FROM bobbintb/unraid:bzroot-7.0.0
+FROM bobbintb/unraid-bzroot
 ADD bzfirmware.tar /usr
