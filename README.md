@@ -26,3 +26,13 @@ docker build -t <repository>/<image>:<tag>
 
 CICD
 No seperate script for this one. This builds off of the CICD-base image to add common tools and packages for building from source or using in your CI/CD pipeline.
+
+The following tools are installed:
+
+  slackpkg  15.0.10 https://www.slackpkg.org/
+
+  slackrepo v20241108 https://github.com/aclemons/slackrepo
+
+  slapt-get 0.11.11 https://github.com/jaos/slapt-get
+
+  Sbopkg 0.38.2 https://sbopkg.org/
