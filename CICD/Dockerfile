@@ -30,8 +30,8 @@ RUN mkdir /pkgs && \
     echo "MIRRORPLUS['alien64-restr-cur']=https://slackware.nl/people/alien/restricted_sbrepos/current/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['alienslackbuilds']=https://slackware.nl/people/alien/slackbuilds/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['conraid64-cur']=https://slackers.it/repository/slackware64-current/" >> /etc/slackpkg/slackpkgplus.conf && \
-    echo "MIRRORPLUS['conraid64-cur-extra']=https://slackers.it/repository/slackware64-current-extra/" >> /etc/slackpkg/slackpkgplus.conf && \
-    echo "MIRRORPLUS['conraid64-cur-testing']=https://slackers.it/repository/slackware64-current-testing/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['conraid64-extra']=https://slackers.it/repository/slackware64-current-extra/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['conraid64-testing']=https://slackers.it/repository/slackware64-current-testing/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['csb64-150']=https://slackware.uk/csb/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['csb64-cur']=https://slackware.uk/csb/current/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['msb64-150']=https://slackware.uk/msb/15.0/latest/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
