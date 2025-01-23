@@ -36,3 +36,5 @@ The following tools are installed:
   slapt-get 0.11.11 https://github.com/jaos/slapt-get
 
   Sbopkg 0.38.2 https://sbopkg.org/
+
+  slpkg 5.1.7 https://dslackw.gitlab.io/slpkg/
