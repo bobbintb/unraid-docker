@@ -18,7 +18,30 @@ RUN mkdir /pkgs && \
     sed -i "s/^DIALOG=.*/DIALOG=off/" "$CONF_FILE" && \
     sed -i "s/^BATCH=.*/BATCH=on/" "$CONF_FILE" && \
     sed -i "s/^DEFAULT_ANSWER=.*/DEFAULT_ANSWER=y/" "$CONF_FILE" && \
-    sed -i '$s/.*/https:\/\/mirrors\.slackware\.com\/slackware\/slackware64-current\//' /etc/slackpkg/mirrors && \
+    #sed -i '$s/.*/https:\/\/mirrors\.slackware\.com\/slackware\/slackware64-current\//' /etc/slackpkg/mirrors && \
+    echo "https://ftp.osuosl.org/pub/slackware/slackware64-current/" >> /etc/slackpkg/mirrors && \
+    # configure slackpkg+
+    echo "#MIRRORPLUS['alien-multilib-150']=http://slackware.nl/people/alien/multilib/15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "#MIRRORPLUS['alien-multilib-current']=http://slackware.nl/people/alien/multilib/current/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['alien64-15.0']=https://slackware.nl/people/alien/sbrepos/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['alien64-current']=http://slackware.nl/people/alien/sbrepos/current/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['alien64-restr-150']=https://slackware.nl/people/alien/restricted_sbrepos/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['alien64-restr-cur']=https://slackware.nl/people/alien/restricted_sbrepos/current/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['alienslackbuilds']=https://slackware.nl/people/alien/slackbuilds/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['conraid64-cur']=https://slackers.it/repository/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['csb64-150']=https://slackware.uk/csb/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['csb64-cur']=https://slackware.uk/csb/current/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['msb64-150']=https://slackware.uk/msb/15.0/latest/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['msb64-cur']=https://slackware.uk/msb/current/latest/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['ponce64-current']=https://ponce.cc/slackware/slackware64-current/packages/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['salix64-150']=https://download.salixos.org/x86_64/15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['salix64-extra-150']=https://download.salixos.org/x86_64/extra-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slackel64-cur']=http://www.slackel.gr/repo/x86_64/current/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slackonly-15.0']=https://packages.slackonly.com/pub/packages/15.0-x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slackonly-current']=https://packages.slackonly.com/pub/packages/current-x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slackpkgplus']=https://slakfinder.org/slackpkg+15/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slint']=https://slackware.uk/slint/x86_64/slint-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
+    echo "MIRRORPLUS['slackware64-15.0+extra']=https://ftp.osuosl.org/pub/slackware/slackware64-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     slackpkg update <<< y && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
