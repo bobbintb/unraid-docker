@@ -1,28 +1,28 @@
 FROM bobbintb/unraid-cicd-base
 RUN mkdir /pkgs && \
     cd /pkgs && \
-    # Download packages needed for slackpkg
+# Download packages needed for slackpkg
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/gnupg2-2.4.7-x86_64-2.txz && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libassuan-3.0.1-x86_64-1.txz && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/npth-1.8-x86_64-1.txz && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libksba-1.6.7-x86_64-1.txz && \
-    # Download slackpkg, sbopkg, slackrepo, and slapt-get
+# Download slackpkg, slackpkg+, sbopkg, slackrepo, slpkg, and slapt-get
     wget https://slackware.uk/slackware/slackware64-current/slackware64/ap/slackpkg-15.0.10-noarch-4.txz && \
     wget https://slakfinder.org/slackpkg+/pkg/slackpkg+-1.8.0-noarch-7mt.txz && \
     wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz && \
     wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/slackrepo/slackrepo-20240823-noarch-1_SBo.txz && \
     wget https://gigenet.dl.sourceforge.net/project/slpkg/binary/slpkg-5.1.7-x86_64-1_dsw.txz && \
-    # install everything and remove the installers
+# install everything and remove the installers
     installpkg /pkgs/* && \
     rm -dr /pkgs/ && \
-    # configure slackpkg
+# configure slackpkg
     CONF_FILE="/etc/slackpkg/slackpkg.conf" && \
     sed -i "s/^DIALOG=.*/DIALOG=off/" "$CONF_FILE" && \
     sed -i "s/^BATCH=.*/BATCH=on/" "$CONF_FILE" && \
     sed -i "s/^DEFAULT_ANSWER=.*/DEFAULT_ANSWER=y/" "$CONF_FILE" && \
     #sed -i '$s/.*/https:\/\/mirrors\.slackware\.com\/slackware\/slackware64-current\//' /etc/slackpkg/mirrors && \
     echo "https://ftp.osuosl.org/pub/slackware/slackware64-current/" >> /etc/slackpkg/mirrors && \
-    # configure slackpkg+
+# configure slackpkg+
     sed -i 's/CACHEUPDATE=off/CACHEUPDATE=on/' /etc/slackpkg/slackpkgplus.conf && \
     sed -i 's|REPOPLUS=( slackpkgplus )|REPOPLUS=( alien64-15.0 alien64-current alien64-restr-150 alien64-restr-cur alienslackbuilds conraid64-cur conraid64-extra conraid64-testing csb64-150 csb64-cur msb64-150 msb64-cur ponce64-current salix64-150 salix64-extra-150 slackel64-cur slackonly-15.0 slackonly-current slackpkgplus slint slackware64-15.0+extra )|' /etc/slackpkg/slackpkgplus.conf && \
     sed -i '/MIRRORPLUS\[\x27slackpkgplus\x27\]=https:\/\/slakfinder.org\/slackpkg+15\//s/^/#/' /etc/slackpkg/slackpkgplus.conf && \
@@ -52,7 +52,7 @@ RUN mkdir /pkgs && \
     slackpkg update <<< y && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
-    #configure Sbopkg
+#configure Sbopkg
     cd / && \
     rm -f /root/.gnupg/public-keys.d/pubring.db.lock && \
     sbopkg -r
