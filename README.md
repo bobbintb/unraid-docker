@@ -29,7 +29,9 @@ No seperate script for this one. This builds off of the CICD-base image to add c
 
 The following tools are installed:
 
-  slackpkg  15.0.10 https://www.slackpkg.org/
+  slackpkg 15.0.10 https://www.slackpkg.org/
+
+  slackpkg+ 1.8.0 https://slakfinder.org/slackpkg+.html
 
   slackrepo v20241108 https://github.com/aclemons/slackrepo
 
