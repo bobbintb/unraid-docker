@@ -23,6 +23,8 @@ RUN mkdir /pkgs && \
     #sed -i '$s/.*/https:\/\/mirrors\.slackware\.com\/slackware\/slackware64-current\//' /etc/slackpkg/mirrors && \
     echo "https://ftp.osuosl.org/pub/slackware/slackware64-current/" >> /etc/slackpkg/mirrors && \
     # configure slackpkg+
+    sed -i 's|REPOPLUS=( slackpkgplus )|REPOPLUS=( alien64-15.0 alien64-current alien64-restr-150 alien64-restr-cur alienslackbuilds conraid64-cur conraid64-extra conraid64-testing csb64-150 csb64-cur msb64-150 msb64-cur ponce64-current salix64-150 salix64-extra-150 slackel64-cur slackonly-15.0 slackonly-current slackpkgplus slint slackware64-15.0+extra )|' /etc/slackpkg/slackpkgplus.conf && \
+    sed -i '/MIRRORPLUS\[\x27slackpkgplus\x27\]=https:\/\/slakfinder.org\/slackpkg+15\//s/^/#/' /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['alien-multilib-150']=http://slackware.nl/people/alien/multilib/15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['alien-multilib-current']=http://slackware.nl/people/alien/multilib/current/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['alien64-15.0']=https://slackware.nl/people/alien/sbrepos/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
