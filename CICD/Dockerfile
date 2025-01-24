@@ -8,6 +8,7 @@ RUN mkdir /pkgs && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libksba-1.6.7-x86_64-1.txz && \
     # Download slackpkg, sbopkg, slackrepo, and slapt-get
     wget https://slackware.uk/slackware/slackware64-current/slackware64/ap/slackpkg-15.0.10-noarch-4.txz && \
+    wget https://slakfinder.org/slackpkg+/pkg/slackpkg+-1.8.0-noarch-7mt.txz && \
     wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz && \
     wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/slackrepo/slackrepo-20240823-noarch-1_SBo.txz && \
     wget https://gigenet.dl.sourceforge.net/project/slpkg/binary/slpkg-5.1.7-x86_64-1_dsw.txz && \
