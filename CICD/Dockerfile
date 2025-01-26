@@ -49,6 +49,7 @@ RUN mkdir /pkgs && \
     echo "MIRRORPLUS['slint']=https://slackware.uk/slint/x86_64/slint-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "MIRRORPLUS['official-15+extra']=https://ftp.osuosl.org/pub/slackware/slackware64-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     slackpkg update <<< y && \
+    slackpkg install slackware64:python3 && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
 #configure Sbopkg
