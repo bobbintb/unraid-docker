@@ -16,5 +16,5 @@ jobs:
         run: |
           cd ./CICD
           docker build -t bobbintb/unraid-cicd .
-          docker run bobbintb/unraid-cicd /bin/bash -c ". /etc/os-release && echo \$ID"
-
+          VERSION_ID=$(docker run --rm bobbintb/unraid-cicd /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
+          docker push bobbintb/unraid-cicd:$VERSION_ID
