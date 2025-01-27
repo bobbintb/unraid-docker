@@ -12,9 +12,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          context: ./CICD
-          push: true
-          tags: bobbintb/unraid-cicd:latest
+      - name: Get UnRAID version
+      - run: |
+          docker run -it bobbintb/unraid-cicd /bin/bash -c ". /etc/os-release && echo \$ID"
+
