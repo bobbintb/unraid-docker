@@ -1,6 +1,7 @@
 name: CICD
 on:
   push:
+  workflow_call:
 jobs:
   docker:
     runs-on: ubuntu-latest
