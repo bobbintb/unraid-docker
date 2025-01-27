@@ -23,7 +23,7 @@ RUN mkdir /pkgs && \
     echo "https://ftp.osuosl.org/pub/slackware/slackware64-current/" >> /etc/slackpkg/mirrors && \
 # configure slackpkg+
     sed -i 's/CACHEUPDATE=off/CACHEUPDATE=on/' /etc/slackpkg/slackpkgplus.conf && \
-    sed -i 's|REPOPLUS=( slackpkgplus )|REPOPLUS=( alien-15 alien-current alien-restr-15 alien-restr-cur alien-slackbuilds conraid-cur conraid-extra conraid-testing csb-15 csb-cur msb-15 msb-cur ponce-current salix-15 salix-extra-15 slackel-cur slackonly-15 slackonly-current slackpkgplus slint official-15+extra )|' /etc/slackpkg/slackpkgplus.conf && \
+    #sed -i 's|REPOPLUS=( slackpkgplus )|REPOPLUS=( alien-15 alien-current alien-restr-15 alien-restr-cur alien-slackbuilds conraid-cur conraid-extra conraid-testing csb-15 csb-cur msb-15 msb-cur ponce-current salix-15 salix-extra-15 slackel-cur slackonly-15 slackonly-current slackpkgplus slint official-15+extra )|' /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['alien-multilib-15']=http://slackware.nl/people/alien/multilib/15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['alien-multilib-current']=http://slackware.nl/people/alien/multilib/current/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['alien-15']=https://slackware.nl/people/alien/sbrepos/15.0/x86_64/" >> /etc/slackpkg/slackpkgplus.conf && \
