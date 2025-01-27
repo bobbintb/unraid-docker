@@ -13,6 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get UnRAID version
-      - run: |
+        run: |
           docker run -it bobbintb/unraid-cicd /bin/bash -c ". /etc/os-release && echo \$ID"
 
