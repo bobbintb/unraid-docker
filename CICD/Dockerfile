@@ -54,4 +54,6 @@ RUN mkdir /pkgs && \
 # configure Sbopkg
     cd / && \
     rm -f /root/.gnupg/public-keys.d/pubring.db.lock && \
+    sed -i 's/--passphrase-fd 0/--pinentry-mode loopback/' /usr/libexec/slackrepo/gen_repos_files.sh && \
+    chmod +x /usr/libexec/slackrepo/gen_repos_files.sh && \
     sbopkg -r
