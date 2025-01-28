@@ -49,11 +49,12 @@ RUN mkdir /pkgs && \
     slackpkg update <<< y && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
-# install python
-    slackpkg install slackware64:python3 slackware64:python-pip && \
 # configure Sbopkg
     cd / && \
     rm -f /root/.gnupg/public-keys.d/pubring.db.lock && \
     sed -i 's/--passphrase-fd 0/--pinentry-mode loopback/' /usr/libexec/slackrepo/gen_repos_files.sh && \
     chmod +x /usr/libexec/slackrepo/gen_repos_files.sh && \
     sbopkg -r
+# install python
+    slackpkg install slackware64:python3 slackware64:python-pip slackware64:pkg-config&& \
+    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc
