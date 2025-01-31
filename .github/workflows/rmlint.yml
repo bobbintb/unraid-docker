@@ -16,5 +16,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Get UnRAID version
         run: |
+          cd ./rmlint
           docker build -t bobbintb/docker-rmlint-unraid:dev .
           docker push bobbintb/docker-rmlint-unraid:dev
