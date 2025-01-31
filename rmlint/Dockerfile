@@ -4,4 +4,4 @@ RUN apt install update-manager-core -y
 RUN apt upgrade -y
 RUN apt dist-upgrade -y
 RUN apt autoremove -y
-RUN do-release-upgrade <<< y
+RUN yes | do-release-upgrade
