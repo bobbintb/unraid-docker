@@ -47,6 +47,7 @@ RUN mkdir /pkgs && \
     echo "#MIRRORPLUS['slint']=https://slackware.uk/slint/x86_64/slint-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['official-15+extra']=https://ftp.osuosl.org/pub/slackware/slackware64-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['bobbintb']=https://raw.githubusercontent.com/bobbintb/Slackware_Packages/refs/heads/main/builds/" >> /etc/slackpkg/slackpkgplus.conf && \
+    slackpkg update gpg <<< y && \
     slackpkg update <<< y && \
     slackpkg install-new && \
     chmod 700 /root/.gnupg && \
