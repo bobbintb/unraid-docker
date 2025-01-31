@@ -1,2 +1,4 @@
 FROM bobbintb/unraid-cicd
-RUN slackpkg install-new
+RUN slackpkg update gpg && \
+    slackpkg update && \
+    slackpkg install-new
