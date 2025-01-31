@@ -49,7 +49,7 @@ RUN mkdir /pkgs && \
     echo "#MIRRORPLUS['bobbintb']=https://raw.githubusercontent.com/bobbintb/Slackware_Packages/refs/heads/main/builds/" >> /etc/slackpkg/slackpkgplus.conf && \
     slackpkg update gpg <<< y && \
     slackpkg update <<< y && \
-    slackpkg install-new && \
+    slackpkg install-new <<< y && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
 # configure Sbopkg
