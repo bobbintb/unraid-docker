@@ -10,7 +10,7 @@ RUN mkdir /pkgs && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/ap/slackpkg-15.0.10-noarch-4.txz && \
     wget https://slakfinder.org/slackpkg+/pkg/slackpkg+-1.8.0-noarch-7mt.txz && \
     wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz && \
-    wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/builds/slackrepo/slackrepo-20241108-noarch-1_loom.tgz && \
+    wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/builds/slackrepo/slackrepo-20241108-noarch-1_SBo.tgz && \
 # install everything and remove the installers
     installpkg /pkgs/* && \
     rm -dr /pkgs/ && \
@@ -47,7 +47,9 @@ RUN mkdir /pkgs && \
     echo "#MIRRORPLUS['slint']=https://slackware.uk/slint/x86_64/slint-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['official-15+extra']=https://ftp.osuosl.org/pub/slackware/slackware64-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['bobbintb']=https://raw.githubusercontent.com/bobbintb/Slackware_Packages/refs/heads/main/builds/" >> /etc/slackpkg/slackpkgplus.conf && \
+    slackpkg update gpg && \
     slackpkg update <<< y && \
+    slackpkg install-new && \
     chmod 700 /root/.gnupg && \
     chmod -R 600 /root/.gnupg/* && \
 # configure Sbopkg
