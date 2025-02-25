@@ -10,7 +10,7 @@ RUN mkdir /pkgs && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/ap/slackpkg-15.0.10-noarch-4.txz && \
     wget https://slakfinder.org/slackpkg+/pkg/slackpkg+-1.8.0-noarch-7mt.txz && \
     wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz && \
-    wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/builds/slackrepo/slackrepo-20241108-noarch-1_loom.tgz && \
+    wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/builds/slackrepo/slackrepo-20241108-noarch-1_SBo.tgz && \
 # install everything and remove the installers
     installpkg /pkgs/* && \
     rm -dr /pkgs/ && \
