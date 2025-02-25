@@ -3,7 +3,7 @@ RUN mkdir /pkgs && \
     cd /pkgs && \
 # Download packages needed for slackpkg
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/gnupg2-2.4.7-x86_64-3.txz && \
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libassuan-3.0.1-x86_64-1.txz && \
+    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libassuan-3.0.2-x86_64-1.txz && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/npth-1.8-x86_64-1.txz && \
     wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libksba-1.6.7-x86_64-1.txz && \
 # Download slackpkg, slackpkg+, sbopkg, and slackrepo
