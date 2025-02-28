@@ -25,6 +25,6 @@ jobs:
           cd ./bzroot
           docker build -t bobbintb/unraid-bzroot .
           docker push bobbintb/unraid-bzroot
-          VERSION_ID=$(docker run --rm bobbintb/unraid-cicd /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
+          VERSION_ID=$(docker run --rm bobbintb/unraid-bzroot /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
           docker build -t bobbintb/unraid-bzroot:$VERSION_ID .
           docker push bobbintb/unraid-bzroot:$VERSION_ID
