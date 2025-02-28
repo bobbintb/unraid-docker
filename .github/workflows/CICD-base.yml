@@ -21,8 +21,8 @@ jobs:
           pwd
           ls -ls
           cd ./CICD-base
-          docker build -t bobbintb/unraid-CICD-base .
-          docker push bobbintb/unraid-CICD-base
-          VERSION_ID=$(docker run --rm bobbintb/unraid-CICD-base /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
-          docker build -t bobbintb/unraid-CICD-base:$VERSION_ID .
-          docker push bobbintb/unraid-CICD-base:$VERSION_ID
+          docker build -t bobbintb/unraid-cicd-base .
+          docker push bobbintb/unraid-cicd-base
+          VERSION_ID=$(docker run --rm bobbintb/unraid-cicd-base /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
+          docker build -t bobbintb/unraid-cicd-base:$VERSION_ID .
+          docker push bobbintb/unraid-cicd-base:$VERSION_ID
