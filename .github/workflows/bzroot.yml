@@ -22,7 +22,7 @@ jobs:
           sudo ./bzroot.sh
           pwd
           ls -ls
-          find / -name bzroot.tar
+          find ./ -name bzroot.tar
           # cd ./CICD
           # docker build -t bobbintb/unraid-cicd .
           # docker push bobbintb/unraid-cicd
