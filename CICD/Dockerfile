@@ -1,16 +1,13 @@
 FROM bobbintb/unraid-cicd-base
 RUN mkdir /pkgs && \
     cd /pkgs && \
-# Download packages needed for slackpkg
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/gnupg2-2.4.7-x86_64-3.txz && \
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libassuan-3.0.2-x86_64-1.txz && \
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/npth-1.8-x86_64-1.txz && \
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/n/libksba-1.6.7-x86_64-1.txz && \
-# Download slackpkg, slackpkg+, sbopkg, and slackrepo
-    wget https://slackware.uk/slackware/slackware64-current/slackware64/ap/slackpkg-15.0.10-noarch-4.txz && \
-    wget https://slakfinder.org/slackpkg+/pkg/slackpkg+-1.8.0-noarch-7mt.txz && \
-    wget https://github.com/sbopkg/sbopkg/releases/download/0.38.2/sbopkg-0.38.2-noarch-1_wsr.tgz && \
-    wget https://github.com/bobbintb/Slackware_Packages/raw/refs/heads/main/builds/slackrepo/slackrepo-20241108-noarch-1_SBo.tgz && \
+# Download latest packages needed for slackpkg
+    wget -nd --recursive --level=1 --accept "gnupg2-*-x86_64-*.txz, libassuan-*-x86_64-*.txz, npth-*-x86_64-*.txz, libksba-*-x86_64-*.txz" https://slackware.uk/slackware/slackware64-current/slackware64/n/
+# Download latest slackpkg, slackpkg+, sbopkg, and slackrepo
+    wget -nd --recursive --level=1 --accept "slackpkg-*-noarch-*.txz" https://slackware.uk/slackware/slackware64-current/slackware64/ap/ && \
+    wget -nd --recursive --level=1 --accept "slackpkg+-*-noarch-*.txz" https://slakfinder.org/slackpkg+/pkg/ && \
+    wget $(wget -qO- https://api.github.com/repos/sbopkg/sbopkg/releases/latest | grep '"browser_download_url":' | cut -d '"' -f 4 | grep 'sbopkg-.*-noarch-.*\.tgz') && \
+    wget $(curl -s https://api.github.com/repos/bobbintb/Slackware_Packages/contents/builds/slackrepo | grep -o '"download_url": "[^"]*slackrepo-[^"]*-noarch-[^"]*\.tgz"' | cut -d'"' -f4 | head -n 1) && \
 # install everything and remove the installers
     installpkg /pkgs/* && \
     rm -dr /pkgs/ && \
