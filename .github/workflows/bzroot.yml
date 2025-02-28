@@ -22,7 +22,6 @@ jobs:
           sudo ./bzroot.sh
           pwd
           ls -ls
-          find ./ -name bzroot.tar
           cd ./bzroot
           docker build -t bobbintb/unraid-bzroot .
           docker push bobbintb/unraid-bzroot
