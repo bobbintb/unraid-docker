@@ -18,8 +18,43 @@ jobs:
         run: |
           sudo apt update
           sudo apt install dracut
-          chmod +x bzroot.sh
-          ./bzroot.sh
+          
+          json=$(curl -s https://releases.unraid.net/usb-creator)
+          version="${1:-$(echo "$json" | jq -r '.os_list[0].name')}"
+          url=$(echo "$json" | jq -r '.. | objects | select(.name == "'"$version"'") | .url')
+          
+          if [ -z "$url" ]; then
+            echo "URL for '${version}' not found, exiting."
+            exit 1
+          fi
+          
+          filename=$(basename "${url}")
+          dir="${filename%.*}"
+          
+          if [ ! -f "$filename" ]; then
+            echo "Downloading ${version} from:"
+            echo "$url"
+            wget "$url"
+          fi
+          
+          echo "Cleaning out workspace..."
+          rm -rf "$dir"
+          unzip "$filename" "bzroot" -d "$dir"
+          cd ./"$dir" || exit
+          mkdir root
+          root=$(realpath ./root)
+          cp bzroot "$root"
+          cd "$root" || exit
+          lsinitrd --unpack bzroot
+          rm bzroot
+          rm ../bzroot
+          cd ..
+          tar -cf bzroot.tar -C ./root .
+          mv bzroot.tar ../bzroot/
+          
+          
+          # chmod +x bzroot.sh
+          # ./bzroot.sh
           pwd
           ls -ls
           # cd ./CICD
