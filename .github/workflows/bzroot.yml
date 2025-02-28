@@ -45,7 +45,7 @@ jobs:
           root=$(realpath ./root)
           cp bzroot "$root"
           cd "$root" || exit
-          lsinitrd --unpack bzroot
+          sudo lsinitrd --unpack bzroot
           rm bzroot
           rm ../bzroot
           cd ..
