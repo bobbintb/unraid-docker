@@ -16,8 +16,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Get UnRAID version
         run: |
-          sudo apt update
-          sudo apt install dracut
+          sudo su
+          apt update
+          apt install dracut
           
           json=$(curl -s https://releases.unraid.net/usb-creator)
           version="${1:-$(echo "$json" | jq -r '.os_list[0].name')}"
