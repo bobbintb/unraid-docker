@@ -49,7 +49,7 @@ jobs:
           rm bzroot
           rm ../bzroot
           cd ..
-          tar -cf bzroot.tar -C ./root .
+          sudo tar -cf bzroot.tar -C ./root .
           mv bzroot.tar ../bzroot/
           
           
