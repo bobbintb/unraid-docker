@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Get UnRAID version
         run: |
+          sudo apt install dracut
           chmod +x bzroot.sh
           ./bzroot.sh
           pwd
