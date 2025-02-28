@@ -1,0 +1,25 @@
+name: Daily check
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs once a day at midnight UTC
+
+jobs:
+  compare_variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compare variables
+        id: compare
+        run: |
+          VAR1="value1"
+          VAR2="value2"
+
+          if [ "$VAR1" != "$VAR2" ]; then
+            echo "Variables don't match, triggering another action..."
+            echo "trigger_another_action=true" >> $GITHUB_ENV
+          fi
+
+      - name: Run another action if variables don't match
+        if: env.trigger_another_action == 'true'
+        run: |
+          echo "Running another action since variables don't match!"
+          # Put your action steps here, or you can even call another script or a different job
