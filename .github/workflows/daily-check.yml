@@ -25,6 +25,7 @@ jobs:
 
       - name: Run another action if variables don't match
         if: env.trigger_another_action == 'true'
-        run: |
-          echo "Running another action since variables don't match!"
-          # Put your action steps here, or you can even call another script or a different job
+        uses: kumarabd/trigger-remote-action@v1.0.0
+        with:
+          name: "bzroot"
+          token: ${{ secrets.YOUR_TOKEN }}
