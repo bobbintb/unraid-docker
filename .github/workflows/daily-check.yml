@@ -29,6 +29,6 @@ jobs:
         if: env.trigger_another_action == 'true'
         uses: yakubique/trigger-github-workflow@v1
         with:
-          repository: yakubique/test-repository
+          repository: bobbintb/unraid-docker
           workflow: bzroot.yml
           # token: ${{ secrets.GITHUB_TOKEN }}
