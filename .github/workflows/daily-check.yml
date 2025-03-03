@@ -1,5 +1,6 @@
 name: Daily check
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'  # Runs once a day at midnight UTC
 
@@ -10,11 +11,13 @@ jobs:
       - name: Compare variables
         id: compare
         run: |
-          VAR1="value1"
-          VAR2="value2"
-
-          if [ "$VAR1" != "$VAR2" ]; then
-            echo "Variables don't match, triggering another action..."
+          latest_hash=$(curl -s https://registry.hub.docker.com/v2/repositories/bobbintb/unraid-bzroot/tags/latest | jq -r .images[0].digest)
+          docker_current_version=$(curl -s https://registry.hub.docker.com/v2/repositories/bobbintb/unraid-bzroot/tags/ | jq -r '.results[] | select(.name != "latest") | select(.images[0].digest == "'"$latest_hash"'") | .name')
+          json=$(curl -s https://releases.unraid.net/usb-creator)
+          unraind_latest_version="${1:-$(echo "$json" | jq -r '.os_list[0].name' | sed 's/Unraid //')}"
+          echo "Latest version of Unraid is ${unraind_latest_version} and latest Docker image is ${docker_current_version}"
+          if [ "$docker_current_version" != "$unraind_latest_version" ]; then
+            
             echo "trigger_another_action=true" >> $GITHUB_ENV
           fi
 
