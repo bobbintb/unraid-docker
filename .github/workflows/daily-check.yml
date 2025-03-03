@@ -19,6 +19,8 @@ jobs:
           if [ "$docker_current_version" != "$unraind_latest_version" ]; then
             echo "No new version. Nothing to do."
             echo "trigger_another_action=true" >> $GITHUB_ENV
+          else
+            echo "No new version. Nothing to do."
           fi
 
       - name: Run another action if variables don't match
