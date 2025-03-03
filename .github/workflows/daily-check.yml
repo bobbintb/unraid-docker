@@ -27,5 +27,5 @@ jobs:
         if: env.trigger_another_action == 'true'
         uses: kumarabd/trigger-remote-action@v1.0.0
         with:
-          name: "bzroot.yml"
+          name: "bzroot"
           token: ${{ secrets.GITHUB_TOKEN }}
