@@ -17,7 +17,7 @@ jobs:
           unraind_latest_version="${1:-$(echo "$json" | jq -r '.os_list[0].name' | sed 's/Unraid //')}"
           echo "Latest version of Unraid is ${unraind_latest_version} and latest Docker image is ${docker_current_version}"
           if [ "$docker_current_version" != "$unraind_latest_version" ]; then
-            
+            echo "No new version. Nothing to do."
             echo "trigger_another_action=true" >> $GITHUB_ENV
           fi
 
