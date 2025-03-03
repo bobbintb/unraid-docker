@@ -28,4 +28,4 @@ jobs:
         uses: kumarabd/trigger-remote-action@v1.0.0
         with:
           name: "bzroot"
-          token: ${{ secrets.GITHUB_TOKEN  }}
+          token: ${{ secrets.UNRAID_DOCKER }}
