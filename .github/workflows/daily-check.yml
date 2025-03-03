@@ -7,6 +7,8 @@ on:
 jobs:
   compare_variables:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - name: Compare variables
         id: compare
@@ -23,9 +25,10 @@ jobs:
             echo "No new version. Nothing to do."
           fi
 
-      - name: Run another action if variables don't match
+      - name: Trigger Github workflow
         if: env.trigger_another_action == 'true'
-        uses: kumarabd/trigger-remote-action@v1.0.0
+        uses: yakubique/trigger-github-workflow@v1
         with:
-          name: "bzroot"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: yakubique/test-repository
+          workflow: bzroot.yml
+          # token: ${{ secrets.GITHUB_TOKEN }}
