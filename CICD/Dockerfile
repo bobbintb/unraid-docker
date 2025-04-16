@@ -5,7 +5,7 @@ RUN mkdir /pkgs && \
     wget -nd --recursive --level=1 --accept "gnupg2-*-x86_64-*.txz, libassuan-*-x86_64-*.txz, npth-*-x86_64-*.txz, libksba-*-x86_64-*.txz" https://slackware.uk/slackware/slackware64-current/slackware64/n/ && \
 # Download latest slackpkg, slackpkg+, sbopkg, and slackrepo
     wget -nd --recursive --level=1 --accept "slackpkg-*-noarch-*.txz" https://slackware.uk/slackware/slackware64-current/slackware64/ap/ && \
-    wget -nd --recursive --level=1 --accept "slackpkg+-*-noarch-*.txz" https://slakfinder.org/slackpkg+/pkg/ && \
+    wget -nd --recursive --level=1 --accept "slackpkg+-*-noarch-*.txz" https://mirrors.slackware.com/slackware/slackware64-current/extra/slackpkg+/ && \
     wget $(wget -qO- https://api.github.com/repos/sbopkg/sbopkg/releases/latest | grep '"browser_download_url":' | cut -d '"' -f 4 | grep 'sbopkg-.*-noarch-.*\.tgz') && \
     wget $(curl -s https://api.github.com/repos/bobbintb/Slackware_Packages/contents/builds/slackrepo | grep -o '"download_url": "[^"]*slackrepo-[^"]*-noarch-[^"]*\.tgz"' | cut -d'"' -f4 | head -n 1) && \
 # install everything and remove the installers
