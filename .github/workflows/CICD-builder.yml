@@ -3,7 +3,7 @@ on:
   push:
     paths: 'CICD/Dockerfile'
   workflow_run:
-    workflows: ["CICD-base"]
+    workflows: ["CICD"]
     types:
       - completed
   workflow_dispatch:
