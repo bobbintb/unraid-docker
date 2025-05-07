@@ -54,7 +54,7 @@ RUN mkdir /pkgs && \
     sed -i 's/--passphrase-fd 0/--pinentry-mode loopback/' /usr/libexec/slackrepo/gen_repos_files.sh && \
     chmod +x /usr/libexec/slackrepo/gen_repos_files.sh && \
     sbopkg -r && \
-# install python
-    slackpkg install-new && \
-    slackpkg upgrade-all && \
+# install build tools
+    slackpkg install slackware64:python3 slackware64:python-pip slackware64:pkg-config slackware64:make slackware64:guile slackware64:gc slackware64:g++ slackware64:glibc slackware64:gcc slackware64:binutils slackware64:llvm slackware64:cmake slackware64:kernel-headers slackware64:bison && \
+    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc slackware64:jemalloc && \
     slackpkg clean-caches
