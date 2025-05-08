@@ -45,16 +45,15 @@ RUN mkdir /pkgs && \
     echo "#MIRRORPLUS['official-15+extra']=https://ftp.osuosl.org/pub/slackware/slackware64-15.0/" >> /etc/slackpkg/slackpkgplus.conf && \
     echo "#MIRRORPLUS['bobbintb']=https://raw.githubusercontent.com/bobbintb/Slackware_Packages/refs/heads/main/builds/" >> /etc/slackpkg/slackpkgplus.conf && \
     slackpkg update <<< y && \
-    chmod 700 /root/.gnupg && \
-    chmod -R 600 /root/.gnupg/* && \
+    slackpkg update gpg <<< y && \
+    # chmod 700 /root/.gnupg && \
+    # chmod -R 600 /root/.gnupg/* && \
 # configure Sbopkg
     cd / && \
-    rm -f /root/.gnupg/public-keys.d/pubring.db.lock && \
+    # rm -f /root/.gnupg/public-keys.d/pubring.db.lock && \
     sed -i 's/--passphrase-fd 0/--pinentry-mode loopback/' /usr/libexec/slackrepo/gen_repos_files.sh && \
     chmod +x /usr/libexec/slackrepo/gen_repos_files.sh && \
     sbopkg -r && \
 # install python
     slackpkg install slackware64:python3 slackware64:python-pip slackware64:pkg-config && \
-    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc slackware64:jemalloc && \
-    slackpkg clean-caches
-
+    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc slackware64:jemalloc
