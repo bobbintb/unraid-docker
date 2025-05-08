@@ -1,7 +1,7 @@
 name: CICD
 on:
-  push:
-    paths: 'CICD/Dockerfile'
+  #push:
+  #  paths: 'CICD/Dockerfile'
   workflow_run:
     workflows: ["CICD-base"]
     types:
