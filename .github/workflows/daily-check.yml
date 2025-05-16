@@ -24,7 +24,7 @@ jobs:
           else
             echo "No new version. Nothing to do."
           fi
-
+          
       - name: Trigger Github workflow
         if: env.trigger_another_action == 'true'
         uses: yakubique/trigger-github-workflow@v1
@@ -32,3 +32,31 @@ jobs:
           repository: bobbintb/unraid-docker
           workflow: bzroot.yml
           # token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Trigger Github workflow
+        if: env.trigger_another_action == 'true'
+        uses: yakubique/trigger-github-workflow@v1
+        with:
+          repository: bobbintb/unraid-docker
+          workflow: CICD-base.yml
+          
+      - name: Trigger Github workflow
+        if: env.trigger_another_action == 'true'
+        uses: yakubique/trigger-github-workflow@v1
+        with:
+          repository: bobbintb/unraid-docker
+          workflow: CICD.yml
+          
+      - name: Trigger Github workflow
+        if: env.trigger_another_action == 'true'
+        uses: yakubique/trigger-github-workflow@v1
+        with:
+          repository: bobbintb/unraid-docker
+          workflow: CICD-builder.yml
+          
+      - name: Trigger Github workflow
+        if: env.trigger_another_action == 'true'
+        uses: yakubique/trigger-github-workflow@v1
+        with:
+          repository: bobbintb/unraid-docker
+          workflow: CICD-builder-upgraded.yml
