@@ -16,9 +16,9 @@ jobs:
           latest_hash=$(curl -s https://registry.hub.docker.com/v2/repositories/bobbintb/unraid-bzroot/tags/latest | jq -r .images[0].digest)
           docker_current_version=$(curl -s https://registry.hub.docker.com/v2/repositories/bobbintb/unraid-bzroot/tags/ | jq -r '.results[] | select(.name != "latest") | select(.images[0].digest == "'"$latest_hash"'") | .name')
           json=$(curl -s https://releases.unraid.net/usb-creator)
-          unraind_latest_version="${1:-$(echo "$json" | jq -r '.os_list[0].name' | sed 's/Unraid //')}"
-          echo "Latest version of Unraid is ${unraind_latest_version} and latest Docker image is ${docker_current_version}"
-          if [ "$docker_current_version" != "$unraind_latest_version" ]; then
+          unraid_latest_version="${1:-$(echo "$json" | jq -r '.os_list[0].name' | sed 's/Unraid //')}"
+          echo "Latest version of Unraid is ${unraid_latest_version} and latest Docker image is ${docker_current_version}"
+          if [ "$docker_current_version" != "$unraid_latest_version" ]; then
             echo "No new version. Nothing to do."
             echo "trigger_another_action=true" >> $GITHUB_ENV
           else
