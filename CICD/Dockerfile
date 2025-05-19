@@ -56,5 +56,5 @@ RUN mkdir /pkgs && \
     sbopkg -r && \
 # install python
     slackpkg install slackware64:python3 slackware64:python-pip slackware64:pkg-config && \
-    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc slackware64:jemalloc
+    slackpkg reinstall slackware64:zlib slackware64:elfutils slackware64:zstd slackware64:glibc slackware64:jemalloc && \
     rm -dr /root/.gnupg/
