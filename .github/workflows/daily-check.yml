@@ -30,7 +30,7 @@ jobs:
         uses: yakubique/trigger-github-workflow@v1
         with:
           repository: bobbintb/unraid-docker
-          workflow: bzroot.yml
+          workflow: 1-bzroot.yml
           # token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Trigger Github workflow
@@ -38,25 +38,25 @@ jobs:
         uses: yakubique/trigger-github-workflow@v1
         with:
           repository: bobbintb/unraid-docker
-          workflow: CICD-base.yml
+          workflow: 2-CICD-base.yml
           
       - name: Trigger Github workflow
         if: env.trigger_another_action == 'true'
         uses: yakubique/trigger-github-workflow@v1
         with:
           repository: bobbintb/unraid-docker
-          workflow: CICD.yml
+          workflow: 3-CICD.yml
           
       - name: Trigger Github workflow
         if: env.trigger_another_action == 'true'
         uses: yakubique/trigger-github-workflow@v1
         with:
           repository: bobbintb/unraid-docker
-          workflow: CICD-builder.yml
+          workflow: 4-CICD-builder.yml
           
       - name: Trigger Github workflow
         if: env.trigger_another_action == 'true'
         uses: yakubique/trigger-github-workflow@v1
         with:
           repository: bobbintb/unraid-docker
-          workflow: CICD-builder-upgraded.yml
+          workflow: 5-CICD-builder-upgraded.yml
