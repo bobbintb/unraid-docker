@@ -2,10 +2,10 @@ name: CICD-base
 on:
   # push:
   #   paths: 'CICD/Dockerfile'
-  workflow_run:
-    workflows: ["bzroot"]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: ["bzroot"]
+  #   types:
+  #     - completed
   workflow_dispatch:
 jobs:
   docker:
