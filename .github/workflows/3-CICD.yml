@@ -1,4 +1,4 @@
-name: CICD
+name: 3 - CICD
 on:
   #push:
   #  paths: 'CICD/Dockerfile'
