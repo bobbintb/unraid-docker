@@ -1,4 +1,4 @@
-name: bzroot
+name: 1 - bzroot
 on:
   # push:
   #   paths: 'CICD/Dockerfile'
