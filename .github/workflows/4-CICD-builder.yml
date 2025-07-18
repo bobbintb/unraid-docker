@@ -1,4 +1,4 @@
-name: CICD-builder
+name: 4 - CICD-builder
 on:
   #push:
   #  paths: 'CICD/Dockerfile'
