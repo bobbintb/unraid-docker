@@ -1,4 +1,4 @@
-name: CICD-base
+name: 2 - CICD-base
 on:
   # push:
   #   paths: 'CICD/Dockerfile'
