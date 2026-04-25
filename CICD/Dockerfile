@@ -6,7 +6,7 @@ RUN mkdir /pkgs && \
 # Download latest slackpkg, slackpkg+, sbopkg, and slackrepo
     wget -r -np -nH -nd -A "slackpkg-*-noarch-*.txz" https://slackware.uk/slackware/slackware64-current/slackware64/ap/ && \
     wget -r -np -nH -nd -A "slackpkg+-*-noarch-*.txz" https://mirrors.slackware.com/slackware/slackware64-current/extra/slackpkg+/ && \
-    wget -r -np -nH -nd -A "slackrepo-*-noarch-1_SBo.tgz" https://bobbintb.github.io/Slackware_Packages/builds/slackrepo/ && \
+    wget -r -np -nH -nd -A "slackrepo-*-noarch-1_slackdce.txz" https://slackware.uk/slackdce/packages/15.0/x86_64/system/slackrepo/ && \
     wget $(wget -qO- https://api.github.com/repos/sbopkg/sbopkg/releases/latest | grep '"browser_download_url":' | cut -d '"' -f 4 | grep 'sbopkg-.*-noarch-.*\.tgz') && \
     
 # install everything and remove the installers
