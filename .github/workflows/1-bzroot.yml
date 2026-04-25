@@ -23,7 +23,7 @@ jobs:
           pwd
           ls -ls
           cd ./bzroot
-          docker build -t bobbintb/unraid-bzroot .
+          docker build --no-cache -t bobbintb/unraid-bzroot .
           docker push bobbintb/unraid-bzroot
           VERSION_ID=$(docker run --rm bobbintb/unraid-bzroot /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
           docker build -t bobbintb/unraid-bzroot:$VERSION_ID .
