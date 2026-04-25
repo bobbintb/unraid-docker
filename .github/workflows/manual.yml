@@ -1,0 +1,49 @@
+name: Manual Build Trigger
+on:
+  workflow_dispatch:  # This allows you to run it manually from the Actions tab
+
+jobs:
+  trigger_builds:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Trigger 1-bzroot
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: bobbintb
+          repo: unraid-docker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: 1-bzroot.yml
+
+      - name: Trigger 2-CICD-base
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: bobbintb
+          repo: unraid-docker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: 2-CICD-base.yml
+
+      - name: Trigger 3-CICD
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: bobbintb
+          repo: unraid-docker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: 3-CICD.yml
+
+      - name: Trigger 4-CICD-builder
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: bobbintb
+          repo: unraid-docker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: 4-CICD-builder.yml
+
+      - name: Trigger 5-CICD-builder-upgraded
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
+        with:
+          owner: bobbintb
+          repo: unraid-docker
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow_file_name: 5-CICD-builder-upgraded.yml
