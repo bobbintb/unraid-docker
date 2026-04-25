@@ -21,7 +21,7 @@ jobs:
       - name: Get UnRAID version
         run: |
           cd ./CICD-builder
-          docker build -t bobbintb/unraid-cicd-builder .
+          docker build --no-cache -t bobbintb/unraid-cicd-builder .
           docker push bobbintb/unraid-cicd-builder
           VERSION_ID=$(docker run --rm bobbintb/unraid-cicd-builder /bin/bash -c ". /etc/os-release && echo \$VERSION_ID")
           docker build -t bobbintb/unraid-cicd-builder:$VERSION_ID .
